@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2022": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-console": "off",
+    "semi": ["warn", "always"],
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+    "no-empty": ["warn", { "allowEmptyCatch": true }],
+    "no-constant-condition": ["error", { "checkLoops": false }]
+  },
+  "globals": {
+    "process": "readonly",
+    "__dirname": "readonly",
+    "Buffer": "readonly"
+  }
+}

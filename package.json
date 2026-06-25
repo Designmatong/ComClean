@@ -1,24 +1,47 @@
 {
   "name": "comclean",
-  "version": "1.0.0",
-  "description": "C??????? - ComClean",
+  "version": "1.1.0",
+  "description": "C盘一键清理工具 — 安全 · 快速 · 现代",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "pack": "electron-builder --win portable --config.extraMetadata.main=main.js",
-    "pack:dir": "electron-builder --win dir --config.extraMetadata.main=main.js"
+    "start": "set ELECTRON_RUN_AS_NODE= && electron .",
+    "pack": "electron-builder --win nsis --config.extraMetadata.main=main.js",
+    "pack:dir": "electron-builder --win dir --config.extraMetadata.main=main.js",
+    "pack:portable": "electron-builder --win portable --config.extraMetadata.main=main.js",
+    "dist": "electron-builder --win nsis --config.extraMetadata.main=main.js",
+    "lint": "eslint . --ext .js",
+    "test": "node test/cleaner.test.js"
   },
   "build": {
     "appId": "com.cleaner.comclean",
     "productName": "ComClean",
+    "asar": true,
+    "compression": "maximum",
     "directories": {
       "output": "dist"
     },
+    "files": [
+      "main.js",
+      "preload.js",
+      "backend/**/*",
+      "src/**/*",
+      "node_modules/**/*"
+    ],
     "win": {
       "target": [
+        "nsis",
         "portable"
-      ],
-      "requestedExecutionLevel": "requireAdministrator"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": null,
+      "uninstallerIcon": null,
+      "installerHeaderIcon": null,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ComClean"
     }
   },
   "devDependencies": {

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'">
   <title>ComClean - C盘清理</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,8 +15,9 @@
       <span class="app-title">ComClean</span>
     </div>
     <div class="titlebar-controls">
-      <button class="control-btn minimize" id="minBtn">&#x2500;</button>
-      <button class="control-btn close" id="closeBtn">&#x2715;</button>
+      <button type="button" class="control-btn theme" id="themeToggle" title="切换深色/浅色模式">&#x1F313;</button>
+      <button type="button" class="control-btn minimize" id="minBtn">&#x2500;</button>
+      <button type="button" class="control-btn close" id="closeBtn">&#x2715;</button>
     </div>
   </div>
 
@@ -25,23 +26,23 @@
     <!-- Header -->
     <div class="header">
       <div class="status-badge" id="statusBadge">&#x1F7E2; 就绪</div>
-      <h1 class="header-title">C盘一键清理</h1>
-      <p class="header-desc">安全扫描并清理系统中的垃圾文件，释放磁盘空间</p>
+      <h1 class="header-title" id="headerTitle">C盘一键清理</h1>
+      <p class="header-desc" id="headerDesc">安全扫描并清理系统中的垃圾文件，释放磁盘空间</p>
     </div>
 
     <!-- Admin Warning -->
-    <div class="admin-warning" id="adminWarning" style="display:none">
+    <div class="admin-warning hidden" id="adminWarning">
       <div class="admin-warning-icon">&#x1F6E1;&#xFE0F;</div>
       <div class="admin-warning-text">
         <strong>建议以管理员身份运行</strong>
         <span>以管理员身份运行可获得更彻底的清理效果</span>
       </div>
-      <button class="admin-btn" id="adminBtn">重新启动</button>
+      <button type="button" class="admin-btn" id="adminBtn">重新启动</button>
     </div>
 
     <!-- Action Button -->
     <div class="action-area">
-      <button class="action-btn" id="actionBtn">
+      <button type="button" class="action-btn" id="actionBtn">
         <div class="btn-ring" id="btnRing"></div>
         <div class="btn-content">
           <span class="btn-icon" id="btnIcon">&#x1F50D;</span>
@@ -69,7 +70,7 @@
           <div class="summary-label">可释放空间</div>
           <div class="summary-value" id="summaryValue">0 B</div>
         </div>
-        <button class="clean-btn" id="cleanBtn">&#x1F9F9; 一键清理</button>
+        <button type="button" class="clean-btn" id="cleanBtn">&#x1F9F9; 一键清理</button>
       </div>
     </div>
 
@@ -82,7 +83,7 @@
           <div class="result-value" id="resultValue">0 B</div>
           <div class="result-sub" id="resultSub">清理完成</div>
         </div>
-        <button class="back-btn" id="backBtn">&#x1F504; 重新扫描</button>
+        <button type="button" class="back-btn" id="backBtn">&#x1F504; 重新扫描</button>
       </div>
       <div class="result-details" id="resultDetails"></div>
     </div>
